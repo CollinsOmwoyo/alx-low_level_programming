@@ -1,5 +1,8 @@
 #include "main.h"
-
+/**
+ * print_square - Prints a square in the terminal
+ * @size: Size of the square
+ */
 void print_square(int size)
 {
 int i, j;
