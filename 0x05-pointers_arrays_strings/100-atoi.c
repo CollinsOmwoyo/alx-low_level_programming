@@ -16,7 +16,7 @@ while (*s && (*s < '0' || *s > '9'))
 {
 if (*s == '-')
 {
-sign = -sign; 
+sign = -sign;
 }
 s++;
 }
