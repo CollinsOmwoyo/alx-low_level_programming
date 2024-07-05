@@ -27,5 +27,5 @@ str[i] = str[i] - 'a' + 'A';
 i++;
 }
 
-return str;
+return (str);
 }

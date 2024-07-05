@@ -18,5 +18,5 @@ str[i] = str[i] - 'a' + 'A';
 }
 }
 
-return str;
+return (str);
 }

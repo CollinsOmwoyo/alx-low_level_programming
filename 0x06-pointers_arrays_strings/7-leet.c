@@ -23,5 +23,5 @@ str[i] = leet[j];
 }
 }
 
-return str;
+return (str);
 }
