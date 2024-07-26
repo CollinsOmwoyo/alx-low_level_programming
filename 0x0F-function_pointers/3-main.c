@@ -1,7 +1,17 @@
 #include "3-calc.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+/**
+ * main - Performs simple operations based on user input.
+ * @argc: The number of command-line arguments.
+ * @argv: The command-line arguments.
+ *
+ * Return: 0 on success.
+ *
+ * Description: This function parses the command-line arguments to
+ *               perform arithmetic operations. It validates input,
+ *               selects the appropriate function, and prints the result.
+ */
 int main(int argc, char *argv[])
 {
 int (*op_func)(int, int);
