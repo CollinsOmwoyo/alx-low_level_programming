@@ -1,5 +1,11 @@
 #include "3-calc.h"
-
+/**
+ * op_add - Adds two integers.
+ * @a: The first integer.
+ * @b: The second integer.
+ *
+ * Return: The sum of a and b.
+ */
 int (*get_op_func(char *s))(int, int)
 {
 op_t ops[] = {
