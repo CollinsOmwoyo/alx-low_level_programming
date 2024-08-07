@@ -1,6 +1,12 @@
 #include "lists.h"
 #include <unistd.h>
 
+/**
+ * print_list - prints all elements of a list_t list.
+ * @h: pointer to the head of the list_t list.
+ *
+ * Return: the number of nodes in the list.
+ */
 size_t print_list(const list_t *h)
 {
 size_t count = 0;
@@ -24,11 +30,10 @@ else
 char buffer[11];
 int len = 0;
 int num = h->len;
-while (num > 0)
-{
+do {
 buffer[len++] = '0' + (num % 10);
 num /= 10;
-}
+} while (num > 0);
 for (int i = len - 1; i >= 0; i--)
 _putchar(buffer[i]);
 _putchar(' ');
