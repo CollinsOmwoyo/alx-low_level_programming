@@ -12,7 +12,7 @@ size_t count = 0;
 
 while (h)
 {
-_putchar(h->n + '0');  /* assuming single-digit integers */
+_putchar(h->n + '0');  /* I am assuming single-digit integers */
 _putchar('\n');
 h = h->next;
 count++;
