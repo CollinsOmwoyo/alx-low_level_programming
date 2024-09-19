@@ -1,18 +1,21 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #define BUFFER_SIZE 1024
 
 /**
- * main - Copies the content of a file to another file
- * @argc: Argument count
- * @argv: Argument vector
+ * main - copies the content of a file to another file
+ * @argc: number of arguments
+ * @argv: arguments passed to the program
  *
  * Return: 0 on success
  */
 int main(int argc, char *argv[])
 {
-int file_from, file_to, read_count, close_from, close_to;
+int file_from, file_to;
+ssize_t read_count;
 char buffer[BUFFER_SIZE];
 
 if (argc != 3)
@@ -55,16 +58,13 @@ close(file_to);
 exit(98);
 }
 
-close_from = close(file_from);
-close_to = close(file_to);
-
-if (close_from == -1)
+if (close(file_from) == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
 exit(100);
 }
 
-if (close_to == -1)
+if (close(file_to) == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
 exit(100);
