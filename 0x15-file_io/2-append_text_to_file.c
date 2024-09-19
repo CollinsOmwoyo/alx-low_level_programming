@@ -1,9 +1,11 @@
 #include "main.h"
+#include <fcntl.h>
+#include <unistd.h>
 
 /**
  * append_text_to_file - Appends text
  * @filename: Name of the file
- * @text_content: NULL-terminated string
+ * @text_content: NULL-terminated string to add
  *
  * Return: 1 on success, -1 on failure
  */
