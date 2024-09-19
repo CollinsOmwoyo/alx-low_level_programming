@@ -5,16 +5,43 @@
 #include <errno.h>
 #include <string.h>
 
-#define ELF_MAGIC_SIZE 16
+/* ELF Header Definitions */
+#define EI_NIDENT 16
+#define ELFCLASS32 1
+#define ELFCLASS64 2
+#define ELFDATA2LSB 1
+#define ELFDATA2MSB 2
+#define EV_CURRENT 1
+#define ELFOSABI_SYSV 0
+#define ELFOSABI_HPUX 1
+#define ELFOSABI_NETBSD 2
+#define ELFOSABI_LINUX 3
+#define ELFOSABI_SOLARIS 6
+#define ELFOSABI_AIX 7
+#define ELFOSABI_IRIX 8
+#define ELFOSABI_FREEBSD 9
+#define ELFOSABI_TRU64 10
+#define ELFOSABI_ARM 97
+#define ET_NONE 0
+#define ET_REL 1
+#define ET_EXEC 2
+#define ET_DYN 3
+#define ET_CORE 4
+
+#define EI_CLASS 0
+#define EI_DATA 1
+#define EI_VERSION 2
+#define EI_OSABI 3
+#define EI_ABIVERSION 4
+#define EI_TYPE 16
+#define EI_ENTRY 24
+
 #define BUFFER_SIZE 64
 
 /**
- * print_error - prints an error message.
+ * print_error - prints an error message and exits with a given status code.
  * @message: The error message to print.
  * @exit_code: The exit status code.
- *
- * Description: prints an error message to stderr and exits
- * with the specified exit code.
  */
 void print_error(const char *message, int exit_code)
 {
@@ -25,15 +52,14 @@ exit(exit_code);
 /**
  * print_elf_header_info - prints the ELF header information.
  * @e_ident: The ELF identification array.
- *
- * Description: parses and prints the ELF header information
- * based on the provided ELF identification array.
  */
 void print_elf_header_info(const unsigned char *e_ident)
 {
+int i;
+
 printf("ELF Header:\n");
 printf("  Magic:   ");
-for (int i = 0; i < ELF_MAGIC_SIZE; i++)
+for (i = 0; i < EI_NIDENT; i++)
 {
 printf("%02x ", e_ident[i]);
 }
@@ -65,7 +91,7 @@ default:
 printf("<unknown: %02x>\n", e_ident[EI_DATA]);
 }
 
-printf("  Version:%d (current)\n", e_ident[EI_VERSION]);
+printf("  Version:                           %d (current)\n", e_ident[EI_VERSION]);
 
 printf("  OS/ABI:                            ");
 switch (e_ident[EI_OSABI])
@@ -104,7 +130,7 @@ default:
 printf("<unknown: %02x>\n", e_ident[EI_OSABI]);
 }
 
-printf("  ABI Version:%d\n", e_ident[EI_ABIVERSION]);
+printf("  ABI Version:                       %d\n", e_ident[EI_ABIVERSION]);
 
 printf("  Type:                              ");
 switch (*(unsigned short *)(e_ident + EI_TYPE))
