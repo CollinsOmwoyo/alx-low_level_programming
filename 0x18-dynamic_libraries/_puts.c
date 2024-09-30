@@ -1,3 +1,4 @@
+#include "main.h"
 void _puts(char *s)
 {
 /* Prints a string followed by a new line */
