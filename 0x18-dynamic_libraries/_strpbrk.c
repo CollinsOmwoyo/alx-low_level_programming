@@ -1,3 +1,5 @@
+#include <string.h>
+#include <stddef.h>
 char *_strpbrk(char *s, char *accept)
 {
 /* Searches a string for any of a set of bytes */
