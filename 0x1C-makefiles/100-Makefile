@@ -1,30 +1,24 @@
-# Variables
 NAME = school
-SRC = main.c school.c
-OBJ = $(SRC:.c=.o)
 CC = gcc
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Werror -Wextra -pedantic
-RM = rm -f
 
-# Rules
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+    $(CC) $(OBJ) -o $(NAME)
 
-main.o: main.c m.h
-	$(CC) -c main.c -o main.o
-
-school.o: school.c m.h
-	$(CC) -c school.c -o school.o
+%.o: %.c m.h
+    $(CC) -c $< -o $@
 
 clean:
-	$(RM) *~
+    $(RM) $(NAME)
+    $(RM) *~
 
 oclean:
-	$(RM) $(OBJ)
+    $(RM) $(OBJ)
 
 fclean: clean oclean
-	$(RM) $(NAME)
 
 re: fclean all
