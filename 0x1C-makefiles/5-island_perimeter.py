@@ -3,12 +3,13 @@
 Module to calculate the perimeter of an island in a grid.
 """
 
+
 def island_perimeter(grid):
     """
     Returns the perimeter of the island described in grid.
 
     Args:
-        grid (list of list of int): A 2D grid where 0 represents water 
+        grid (list of list of int): A 2D grid where 0 represents water
                                     and 1 represents land.
 
     Returns:
